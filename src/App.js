@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import Menu from './components/Menu';
 import Modal from './components/Modal';
+import Question from './components/Question';
 import GlobalStyle from './components/styles/GlobalStyle';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <Fragment>
       <GlobalStyle />
       {/* <Modal /> */}
-      <Menu />
+      {/* <Menu /> */}
+      {/* <Question /> */}
     </Fragment>
   );
 }
