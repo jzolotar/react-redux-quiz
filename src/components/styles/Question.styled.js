@@ -11,6 +11,7 @@ export const StyledQuestion = styled.section`
 
   p {
     text-align: right;
+    color: #228b22;
     @media (min-width: 768px) {
       font-size: 1rem;
     }
