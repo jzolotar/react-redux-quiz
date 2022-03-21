@@ -32,7 +32,8 @@ export const StyledMenu = styled.section`
       flex-direction: column;
 
       label {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.35rem;
       }
 
       select {
@@ -40,7 +41,7 @@ export const StyledMenu = styled.section`
         background-color: #ffecd1;
         border-radius: 0.312rem;
         padding: 0.1rem 0.3rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
     }
 
