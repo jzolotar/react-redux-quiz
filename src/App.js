@@ -9,10 +9,10 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <Loader />
-      {/* <Modal /> */}
-      {/* <Menu /> */}
-      {/* <Question /> */}
+      <Menu />
+      {/* <Loader /> */}
+      {/* <Question />
+      <Modal /> */}
     </Fragment>
   );
 }

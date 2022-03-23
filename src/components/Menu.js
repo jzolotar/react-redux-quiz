@@ -9,7 +9,6 @@ const Menu = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // getQuestions(url);
     dispatch(getQuestions());
   };
   return (
