@@ -9,7 +9,7 @@ function App() {
     <Fragment>
       <GlobalStyle />
       {/* <Modal /> */}
-      {/* <Menu /> */}
+      <Menu />
       {/* <Question /> */}
     </Fragment>
   );

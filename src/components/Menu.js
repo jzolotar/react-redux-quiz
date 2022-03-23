@@ -1,9 +1,20 @@
 import { StyledMenu } from './styles/Menu.styled';
+import { getQuestions } from '../store';
+import { useDispatch } from 'react-redux';
+
+const url = `https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`;
 
 const Menu = () => {
+  const dispatch = useDispatch();
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    // getQuestions(url);
+    dispatch(getQuestions());
+  };
   return (
     <StyledMenu>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <h1>Setup Quiz</h1>
         <div>
           <label>Number of Questions</label>
