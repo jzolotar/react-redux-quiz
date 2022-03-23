@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Loader } from './components/styles/Loader';
 import Menu from './components/Menu';
 import Modal from './components/Modal';
 import Question from './components/Question';
@@ -8,8 +9,9 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
+      <Loader />
       {/* <Modal /> */}
-      <Menu />
+      {/* <Menu /> */}
       {/* <Question /> */}
     </Fragment>
   );
