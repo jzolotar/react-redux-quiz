@@ -20,6 +20,7 @@ const quizSlice = createSlice({
   reducers: {
     setQuestions(state, action) {
       state.questions = [...action.payload];
+      console.log(state.questions);
     },
     setMenu(state, action) {
       state.menu = action.payload;
@@ -63,9 +64,7 @@ export const {
 } = quizSlice.actions;
 export default store;
 
-export const getQuestions = () => async (dispatch) => {
-  const response = await axios(
-    `https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`
-  ).catch((err) => console.log(err));
+export const getQuestions = (url) => async (dispatch) => {
+  const response = await axios(url).catch((err) => console.log(err));
   dispatch(setQuestions(response.data.results));
 };
