@@ -37,17 +37,13 @@ const Question = () => {
       <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
       {questionsList.map((question, index) => (
         <button
-          id={index}
+          key={index}
           className='answer'
           onClick={() => onCheckIfCorrect(question)}
-        >
-          {question}
-        </button>
+          dangerouslySetInnerHTML={{ __html: question }}
+        ></button>
       ))}
-      {/* <button className='answer'>Birdie</button>
-      <button className='answer'>Eagle</button>
-      <button className='answer'>Albatross</button>
-      <button className='answer'>Bogey</button> */}
+
       <button className='next' onClick={onNextQuestionHandler}>
         Next Question
       </button>

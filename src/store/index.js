@@ -1,6 +1,5 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
 
 const initialState = {
   menu: true,
@@ -21,6 +20,10 @@ const quizSlice = createSlice({
     setQuestions(state, action) {
       state.questions = [...action.payload];
       console.log(state.questions);
+      if (state.questions !== 0) {
+        state.loading = false;
+        state.quiz = true;
+      }
     },
     setMenu(state, action) {
       state.menu = action.payload;
@@ -30,16 +33,19 @@ const quizSlice = createSlice({
       state.modal = action.payload;
     },
 
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
+
     nextQuestion(state) {
       if (state.index + 1 >= state.questions.length) {
-        state.index = 0;
+        state.quiz = false;
+        state.modal = true;
         return;
       }
       state.index++;
     },
-    resetQuiz(state) {
-      state = initialState;
-    },
+    resetQuiz: () => initialState,
     checkCorrect(state, action) {
       //check for correct answer
       const correctAnswer = state.questions[state.index].correct_answer;
@@ -59,12 +65,31 @@ export const {
   setMenu,
   setModal,
   nextQuestion,
+  setLoading,
   resetQuiz,
   checkCorrect,
 } = quizSlice.actions;
 export default store;
 
 export const getQuestions = (url) => async (dispatch) => {
-  const response = await axios(url).catch((err) => console.log(err));
+  dispatch(setMenu(false));
+  dispatch(setLoading(true));
+  const response = await axios(url).catch((err) => {
+    if (err.response) {
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+    } else if (err.request) {
+      console.log(err.request);
+    } else {
+      console.log('Error', err.message);
+    }
+  });
+  if (response.data.response_code !== 0) {
+    //no data has been fetched
+    console.log('no data' + response.data.response_code);
+    //handle this scenario - modal
+    return;
+  }
   dispatch(setQuestions(response.data.results));
 };

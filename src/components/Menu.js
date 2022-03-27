@@ -3,8 +3,6 @@ import { getQuestions } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
 
-const url = `https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple`;
-
 const Menu = () => {
   const dispatch = useDispatch();
 
@@ -15,8 +13,8 @@ const Menu = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const url = `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`;
-    console.log(numberOfQuestions, category, difficulty);
-    console.log(url);
+    // console.log(numberOfQuestions, category, difficulty);
+    // console.log(url);
     dispatch(getQuestions(url));
   };
 

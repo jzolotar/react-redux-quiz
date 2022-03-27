@@ -1,11 +1,23 @@
 import { Fragment } from 'react';
 import { StyledModal, StyledModalOverlay } from './styles/Modal.styled';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { resetQuiz } from '../store';
 
 const Modal = () => {
+  //states/
   const correctAnswers = useSelector((state) => state.correct);
-  const index = useSelector((state) => state.index);
-  const percentageRatio = ((correctAnswers / index) * 100).toFixed();
+  const numOfQuestions = useSelector((state) => state.questions.length);
+
+  //dispatch
+  const dispatch = useDispatch();
+
+  //count %
+  const percentageRatio = ((correctAnswers / numOfQuestions) * 100).toFixed();
+
+  const onClickHandler = () => {
+    console.log('click');
+    dispatch(resetQuiz());
+  };
   return (
     <Fragment>
       <StyledModal>
@@ -14,7 +26,7 @@ const Modal = () => {
           <p>
             You answered <span>{percentageRatio}%</span> of questions correctly
           </p>
-          <button>Play again</button>
+          <button onClick={onClickHandler}>Play again</button>
         </div>
       </StyledModal>
       <StyledModalOverlay />
