@@ -46,8 +46,9 @@ const Menu = () => {
           <label>Category</label>
           <select onChange={onChangeHandlerCategory}>
             <option value='21'>Sports</option>
-            <option value='35'>Music</option>
-            <option value='25'>Science</option>
+            <option value='25'>Art</option>
+            <option value='28'>Vehicles</option>
+            <option value='22'>Geography</option>
           </select>
         </div>
 

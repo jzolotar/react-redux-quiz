@@ -37,6 +37,7 @@ export const StyledQuestion = styled.section`
 
     :hover {
       background-color: #219ebc;
+      color: #ffffff;
     }
     @media (min-width: 768px) {
       font-size: 1rem;
