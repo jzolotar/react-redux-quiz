@@ -39,8 +39,9 @@ const quizSlice = createSlice({
 
     nextQuestion(state) {
       if (state.index + 1 >= state.questions.length) {
-        state.quiz = false;
+        // state.quiz = false;
         state.modal = true;
+
         return;
       }
       state.index++;

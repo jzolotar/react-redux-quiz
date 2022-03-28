@@ -32,7 +32,8 @@ const Question = () => {
   return (
     <StyledQuestion>
       <p>
-        Correct Answers: {correct}/{index}
+        Correct Answers: {correct}/
+        {index + 1 >= questions.length ? index + 1 : index}
       </p>
       <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
       {questionsList.map((question, index) => (
