@@ -7,6 +7,7 @@ const Modal = () => {
   //states/
   const correctAnswers = useSelector((state) => state.correct);
   const numOfQuestions = useSelector((state) => state.questions.length);
+  const error = useSelector((state) => state.error);
 
   //dispatch
   const dispatch = useDispatch();
@@ -15,20 +16,28 @@ const Modal = () => {
   const percentageRatio = ((correctAnswers / numOfQuestions) * 100).toFixed();
 
   const onClickHandler = () => {
-    console.log('click');
     dispatch(resetQuiz());
   };
+
+  const noErrorContent = (
+    <div>
+      <h2>Congratulation</h2>
+      <p>
+        You answered <span>{percentageRatio}%</span> of questions correctly
+      </p>
+      <button onClick={onClickHandler}>Play again</button>
+    </div>
+  );
+  const errorContent = (
+    <div>
+      <h2>Error occured</h2>
+      <p>{error.msg}</p>
+      <button onClick={onClickHandler}>Try again</button>
+    </div>
+  );
   return (
     <Fragment>
-      <StyledModal>
-        <div>
-          <h2>Congratulation</h2>
-          <p>
-            You answered <span>{percentageRatio}%</span> of questions correctly
-          </p>
-          <button onClick={onClickHandler}>Play again</button>
-        </div>
-      </StyledModal>
+      <StyledModal>{error.status ? errorContent : noErrorContent}</StyledModal>
       <StyledModalOverlay />
     </Fragment>
   );
