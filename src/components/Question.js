@@ -11,13 +11,11 @@ const Question = () => {
   //current question
 
   const question = questions[index];
-  console.log(question);
-  console.log(index);
+
   const questionsList = [
     question.correct_answer,
     ...question.incorrect_answers,
   ];
-  console.log(questionsList);
 
   //handler
   const onNextQuestionHandler = () => {

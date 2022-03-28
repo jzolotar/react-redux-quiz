@@ -19,7 +19,7 @@ const quizSlice = createSlice({
   reducers: {
     setQuestions(state, action) {
       state.questions = [...action.payload];
-      console.log(state.questions);
+
       if (state.questions !== 0) {
         state.loading = false;
         state.quiz = true;
@@ -53,7 +53,7 @@ const quizSlice = createSlice({
       //check for correct answer
       const correctAnswer = state.questions[state.index].correct_answer;
       const userAnswer = action.payload;
-      console.log(correctAnswer, userAnswer);
+
       if (correctAnswer === userAnswer) state.correct++;
     },
   },
