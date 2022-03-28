@@ -1,7 +1,7 @@
 import { StyledMenu } from './styles/Menu.styled';
 import { getQuestions } from '../store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const Menu = () => {
   const dispatch = useDispatch();
